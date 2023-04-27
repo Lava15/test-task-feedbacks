@@ -1,0 +1,11 @@
+.captcha-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#captcha-code {
+    font-size: 24px;
+    filter: blur(2px) grayscale(60%);
+    background-color: #eee;
+    padding: 8px;
+}
