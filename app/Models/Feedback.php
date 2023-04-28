@@ -15,8 +15,6 @@ class Feedback extends Model
         'message',
         'status',
     ];
-    protected $dateFormat = 'U';
-
     protected $casts = [
         'status' => 'integer'
     ];
