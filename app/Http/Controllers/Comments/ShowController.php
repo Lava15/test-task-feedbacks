@@ -9,11 +9,18 @@ use Illuminate\Http\Request;
 
 class ShowController extends Controller
 {
-    public function __invoke()
+    public function __invoke(Request $request)
     {
-        $feedbacks = Feedback::query()->where('status', CommentStatus::ACCEPTED)->latest()->paginate(5);
+        $searchTerm = $request->input('search');
+        $feedbacks = Feedback::query();
+        if (!empty($searchTerm)) {
+            $feedbacks = $feedbacks->search($searchTerm);
+            return (view('feedbacks', [
+                'feedbacks' => $feedbacks->where('status', CommentStatus::ACCEPTED)->latest()->paginate(5)
+            ]));
+        }
         return (view('feedbacks', [
-            'feedbacks' => $feedbacks
+            'feedbacks' => $feedbacks->where('status', CommentStatus::ACCEPTED)->latest()->paginate(5)
         ]));
     }
 }

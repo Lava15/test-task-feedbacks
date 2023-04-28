@@ -38,6 +38,7 @@
         <input type="text" class="form-control" id="captcha" name="captcha"/>
 
         <button type="submit" class="btn btn-info btn-block">Отправить</button>
+        <a href="{{ route('feedbacks') }}" class="mt-5">Посмотрнть все отзывы!</a>
     </div>
 </form>
 {{--NAME VALIDATION--}}
@@ -53,6 +54,8 @@
     nameField.addEventListener('blur', function () {
         if (!validateName(nameField.value)) {
             errorName.innerText = 'Введите ФИО только буквами(Латиница, кирилица)';
+        } else {
+            errorName.innerText =""
         }
     });
 </script>

@@ -24,7 +24,7 @@ class ModerateController extends Controller
         $feedback->update([
             'status' => CommentStatus::ACCEPTED->value
         ]);
-        return redirect()->back();
+        return redirect()->back()->with('accepted', 'Одобрено');
     }
 
     public function reject(Feedback $feedback): RedirectResponse
@@ -33,6 +33,6 @@ class ModerateController extends Controller
             'status' => CommentStatus::REJECTED->value
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with('rejected', 'Не одобрено');
     }
 }

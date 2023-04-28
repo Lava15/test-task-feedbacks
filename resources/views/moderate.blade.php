@@ -1,6 +1,7 @@
 @extends('layouts.app')
+@include('layouts.navigation')
 
-<div class="br-contentpanel">
+<div class="br-contentpanel container-xl mx-auto">
     <div class="pd-x-20 pd-sm-x-30 pd-t-20 pd-sm-t-30">
         <h4 class="tx-gray-800 mg-b-5 text-center">Модерация обратной связи</h4>
     </div>
@@ -57,7 +58,23 @@
 
                 </tbody>
             </table>
+            @if (session('accepted'))
+                <div class="alert alert-success">
+                    {{ session('accepted') }}
+                </div>
+            @endif
+
+
+
+            @if (session('rejected'))
+                <div class="alert alert-danger">
+                    {{ session('rejected') }}
+                </div>
+            @endif
         </div>
-    </div><!-- br-pagebody -->
+
+    </div>
 </div>
+
+
 

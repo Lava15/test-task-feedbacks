@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\CommentStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,4 +20,12 @@ class Feedback extends Model
     protected $casts = [
         'status' => 'integer'
     ];
+
+    public function scopeSearch($query, $searchTerm)
+    {
+        return $query
+            ->where('full_name', 'LIKE', '%' . $searchTerm . '%')
+            ->orWhere('message', 'LIKE', '%' . $searchTerm . '%')
+            ->where('status', CommentStatus::ACCEPTED);
+    }
 }
